@@ -2,7 +2,7 @@
   const { mapState, mapActions } = Pinia;
   
   export default {
-    template: ` <div class="container mt-5 my-4 p-4">
+    template: ` <div class="container-fluid mt-5 my-4 p-4">
     <div class="bg-light p-4">
         <div v-if=" !cartList.carts.length">
             購物車沒有任何品項
@@ -11,7 +11,7 @@
         <table v-else class="bg-light table align-middle">
             <tbody>
                 <tr v-for="item in cartList.carts" :key="item.id">
-                    <td width="100" class="bg-light">
+                    <td width="50" class="bg-light">
                         <a href="#" class="text-dark" style="text-decoration:none"
                         @click.prevent="removeCartItem(item.id)"
                         >x</a>
@@ -20,8 +20,8 @@
                         <img :src="item.product.imageUrl"
                             alt="" class="table-image">
                     </td>
-                    <td width="100" class="bg-light">{{ item.product.title }}</td>
-                    <td width="100" class="bg-light">
+                    <td width="50" class="bg-light">{{ item.product.title }}</td>
+                    <td width="50" class="bg-light">
                         <select name="" id="" class="form-select" :value="item.qty"
                         @change="(evt) => setCartQty(item.id, evt)">
                             <option :value="i" v-for="i in 10" :key="i">{{ i }}</option>
