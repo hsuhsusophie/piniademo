@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pinia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="images/favicon.ico" rel="shortcut icon">
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top p-2 navbar-transparent">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Caffice</a>
+            <button type="button" class="btn btn-lighter">購物車
+                <span class="badge bg-danger text-white">0</span>
+            </button>
+        </div>
+    </nav> -->
+
+    <!-- <div class="container mt-5 my-4 p-4">
+        <div class="bg-light p-4">
+            <div>
+                購物車沒有任何品項
+            </div>
+            
+            <table class="bg-light table align-middle">
+                <tbody>
+                    <tr>
+                        <td width="50" class="bg-light">
+                            <a href="#" class="text-dark">x</a>
+                        </td>
+                        <td width="50" class="bg-light">
+                            <img src="https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                alt="" class="table-image">
+                        </td>
+                        <td width="50" class="bg-light">牛油可頌</td>
+                        <td width="50" class="bg-light">
+                            <select name="" id="" class="form-select">
+                                <option value="">1</option>
+                            </select>
+                        </td>
+                        <td width="50" class="bg-light text-end">$120</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="bg-light text-end">總金額 NT$120</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 my-4 p-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    class="card-img-top" alt="">
+                <div class="card-body">
+                    <h6 class="card-title">牛油可頌
+                        <span class="float-end">$120</span>
+                    </h6>
+                    <a href="#" class="btn btn-outline-secondary w-100 ">加入購物車</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    class="card-img-top" alt="">
+                <div class="card-body">
+                    <h6 class="card-title">牛油可頌
+                        <span class="float-end">$120</span>
+                    </h6>
+                    <a href="#" class="btn btn-outline-secondary w-100 ">加入購物車</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    class="card-img-top" alt="">
+                <div class="card-body">
+                    <h6 class="card-title">牛油可頌
+                        <span class="float-end">$120</span>
+                    </h6>
+                    <a href="#" class="btn btn-outline-secondary w-100 ">加入購物車</a>
+                </div>
+            </div>
+        </div>
+    </div>  -->
+
+ 
+
+    <div id="app">
+        <Navbar-Component></Navbar-Component>
+        <Cart-component></Cart-component>
+        <Product-component></Product-component>
+    </div>
+
+  <!-- VueDemi，使用 Pinia 必要的相依套件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-demi/0.13.11/index.iife.js"></script>
+  <script>const I = VueDemi; const vueDemi = VueDemi;</script>
+  <!-- Pinia 網頁版，實戰中還是以 npm 為主，這是比較少見的使用方式 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pinia/2.0.22/pinia.iife.js"></script>
+
+    <script type="module">
+        const { createApp } = Vue;
+        const { createPinia } = Pinia;
+
+
+
+        import NavbarComponent from './components/navbarComponent.js'
+        import CartComponent from './components/cartComponent.js'
+        import ProductComponent from './components/productComponent.js'
+
+
+        const app = createApp({
+            components: {
+                NavbarComponent,
+                CartComponent,
+                ProductComponent
+            }
+        });
+
+        const pinia = createPinia();
+        app.use(pinia);
+        app.mount('#app');
+
+
+
+    </script>
+
+
+    <style>
+        .card-img-top {
+            object-fit: cover;
+            height: 200px;
+        }
+
+        .table-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+
+    </div>
+
+
+    <footer class="footer py-2 bg-light">
+        <div class="container text-center">
+            <small class="text-black-50 fw-light mb-0">@caffice</small>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+</body>
+
+</html>
